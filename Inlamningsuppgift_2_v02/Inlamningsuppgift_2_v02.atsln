@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Inlamningsuppgift_2_v02", "Inlamningsuppgift_2_v02\Inlamningsuppgift_2_v02.cproj", "{32542C8F-32AA-467D-B911-560FF4D02F6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32542C8F-32AA-467D-B911-560FF4D02F6B}.Debug|ARM.ActiveCfg = Debug|ARM
+		{32542C8F-32AA-467D-B911-560FF4D02F6B}.Debug|ARM.Build.0 = Debug|ARM
+		{32542C8F-32AA-467D-B911-560FF4D02F6B}.Release|ARM.ActiveCfg = Release|ARM
+		{32542C8F-32AA-467D-B911-560FF4D02F6B}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
