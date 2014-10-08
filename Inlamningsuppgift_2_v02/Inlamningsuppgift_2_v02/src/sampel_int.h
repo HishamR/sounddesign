@@ -14,6 +14,7 @@
 
 #define CHECK_PIN PIO_PB26_IDX	//Ardiuno Due pin 22 used to measure work load
 
+void LCDupdate(uint8_t pos, uint16_t val, const char *unit);
 void TCO_Handler(void);
 
 
