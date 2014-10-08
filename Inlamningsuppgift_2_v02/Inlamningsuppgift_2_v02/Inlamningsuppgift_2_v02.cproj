@@ -452,9 +452,6 @@
     <Compile Include="src\adc_dac.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\buttonReaderfromLab1cmain.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\conf_tc.c">
       <SubType>compile</SubType>
     </Compile>
@@ -473,7 +470,7 @@
     <Compile Include="src\LCDShield.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\mainFranLab2abc.c">
+    <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\sampel_int.c">

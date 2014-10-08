@@ -1,15 +1,15 @@
 ﻿/*
- * adc_dac.c
- *
- * The main purpose of this file is A/D and D/A conversion. Base of file is authored
- * by Tommy and later modified by Hisham and Hamit.
- *
- * Created: 2013-12-10 08:30:13
- *  Author: Tommy
- *
- * Modified: 2014-10-08 17:09:00
- *  Author: Hisham Ramish and Hamit Sen
- */ 
+* adc_dac.c
+*
+* The main purpose of this file is A/D and D/A conversion. Base of file is authored
+* by Tommy and later modified by Hisham and Hamit.
+*
+* Created: 2013-12-10 08:30:13
+*  Author: Tommy
+*
+* Modified: 2014-10-08 17:09:00
+*  Author: Hisham Ramish and Hamit Sen
+*/
 
 #include <asf.h>
 #include "adc_dac.h"

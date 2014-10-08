@@ -1,12 +1,12 @@
 /*
- * LCDShield.c
- *
- * Created: 2013
- *  Author: Ulrik
- *
- * Modified: 2014-10-08 17:09:00
- *  Author: Hisham Ramish and Hamit Sen
- */
+* LCDShield.c
+*
+* Created: 2013
+*  Author: Ulrik
+*
+* Modified: 2014-10-08 17:09:00
+*  Author: Hisham Ramish and Hamit Sen
+*/
 
 #include <stdio.h>
 #include <string.h>
@@ -165,16 +165,16 @@ int LCDwriteInteger(int number)
 
 }
 
-/*  
- * Displays strings on the Arduino Shield Display
- */
+/*
+* Displays strings on the Arduino Shield Display
+*/
 int LCDwriteString(const char* str)
 {
 	int all_ok = 0;
 	
-	/*  
-	 * Loops until break
-	 */
+	/*
+	* Loops until break
+	*/
 	while (*str != '\0')
 	{
 		LCDwrite(*str, HIGH);

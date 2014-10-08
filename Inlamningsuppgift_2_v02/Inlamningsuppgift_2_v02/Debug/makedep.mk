@@ -4,15 +4,13 @@
 
 src\adc_dac.c
 
-src\buttonReaderfromLab1cmain.c
-
 src\conf_tc.c
 
 src\delay.c
 
 src\LCDShield.c
 
-src\mainFranLab2abc.c
+src\main.c
 
 src\sampel_int.c
 

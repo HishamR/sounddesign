@@ -1,6 +1,5 @@
-src/mainFranLab2abc.d src/mainFranLab2abc.o: ../src/mainFranLab2abc.c \
- ../src/asf.h ../src/ASF/sam/drivers/adc/adc.h \
- ../src/ASF/sam/utils/compiler.h \
+src/main.d src/main.o: ../src/main.c ../src/asf.h \
+ ../src/ASF/sam/drivers/adc/adc.h ../src/ASF/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\lib\gcc\arm-none-eabi\4.8.3\include\stddef.h \
  ../src/ASF/common/utils/parts.h \
  ../src/ASF/sam/utils/preprocessor/preprocessor.h \
@@ -122,7 +121,8 @@ src/mainFranLab2abc.d src/mainFranLab2abc.o: ../src/mainFranLab2abc.c \
  ../src/ASF/common/services/clock/sam3x/pll.h \
  ../src/ASF/sam/drivers/pmc/sleep.h ../src/ASF/sam/drivers/tc/tc.h \
  ../src/ASF/sam/drivers/pio/pio_handler.h ../src/adc_dac.h \
- ../src/conf_tc.h ../src/sampel_int.h
+ ../src/conf_tc.h ../src/LCDShield.h ../src/asf.h ../src/sampel_int.h \
+ ../src/delay.h
 
 ../src/asf.h:
 
@@ -386,4 +386,10 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu
 
 ../src/conf_tc.h:
 
+../src/LCDShield.h:
+
+../src/asf.h:
+
 ../src/sampel_int.h:
+
+../src/delay.h:

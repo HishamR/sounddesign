@@ -85,11 +85,10 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../src/adc_dac.c \
-../src/buttonReaderfromLab1cmain.c \
 ../src/conf_tc.c \
 ../src/delay.c \
 ../src/LCDShield.c \
-../src/mainFranLab2abc.c \
+../src/main.c \
 ../src/sampel_int.c \
 ../src/ASF/common/services/clock/sam3x/sysclk.c \
 ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.c \
@@ -116,11 +115,10 @@ ASM_SRCS +=
 
 OBJS +=  \
 src/adc_dac.o \
-src/buttonReaderfromLab1cmain.o \
 src/conf_tc.o \
 src/delay.o \
 src/LCDShield.o \
-src/mainFranLab2abc.o \
+src/main.o \
 src/sampel_int.o \
 src/ASF/common/services/clock/sam3x/sysclk.o \
 src/ASF/common/utils/interrupt/interrupt_sam_nvic.o \
@@ -140,11 +138,10 @@ src/ASF/sam/utils/syscalls/gcc/syscalls.o
 
 OBJS_AS_ARGS +=  \
 src/adc_dac.o \
-src/buttonReaderfromLab1cmain.o \
 src/conf_tc.o \
 src/delay.o \
 src/LCDShield.o \
-src/mainFranLab2abc.o \
+src/main.o \
 src/sampel_int.o \
 src/ASF/common/services/clock/sam3x/sysclk.o \
 src/ASF/common/utils/interrupt/interrupt_sam_nvic.o \
@@ -164,11 +161,10 @@ src/ASF/sam/utils/syscalls/gcc/syscalls.o
 
 C_DEPS +=  \
 src/adc_dac.d \
-src/buttonReaderfromLab1cmain.d \
 src/conf_tc.d \
 src/delay.d \
 src/LCDShield.d \
-src/mainFranLab2abc.d \
+src/main.d \
 src/sampel_int.d \
 src/ASF/common/services/clock/sam3x/sysclk.d \
 src/ASF/common/utils/interrupt/interrupt_sam_nvic.d \
@@ -188,11 +184,10 @@ src/ASF/sam/utils/syscalls/gcc/syscalls.d
 
 C_DEPS_AS_ARGS +=  \
 src/adc_dac.d \
-src/buttonReaderfromLab1cmain.d \
 src/conf_tc.d \
 src/delay.d \
 src/LCDShield.d \
-src/mainFranLab2abc.d \
+src/main.d \
 src/sampel_int.d \
 src/ASF/common/services/clock/sam3x/sysclk.d \
 src/ASF/common/utils/interrupt/interrupt_sam_nvic.d \
@@ -221,8 +216,6 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
-
-
 
 
 

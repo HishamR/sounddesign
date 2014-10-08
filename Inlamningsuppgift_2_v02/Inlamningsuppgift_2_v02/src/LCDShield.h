@@ -1,12 +1,12 @@
 /*
- * LCDShield.h
- *
- * Created: 2013
- *  Author: Ulrik
- *
- * Modified: 2014-10-08 17:09:00
- *  Author: Hisham Ramish and Hamit Sen
- */
+* LCDShield.h
+*
+* Created: 2013
+*  Author: Ulrik
+*
+* Modified: 2014-10-08 17:09:00
+*  Author: Hisham Ramish and Hamit Sen
+*/
 
 
 #ifndef LCDShield_h
