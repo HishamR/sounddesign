@@ -12,7 +12,10 @@
 #ifndef LCDShield_h
 #define LCDShield_h
 
-#include "asf.h" /* Ugly but necessary */
+#include <stdio.h>
+#include <string.h>
+#include "asf.h"
+#include "delay.h"
 
 #define LCD_RS PIO_PC22_IDX
 #define LCD_Enable PIO_PC21_IDX
@@ -24,14 +27,11 @@
 
 #define LCD_mask_D4_D7 0b00000111100000000000000000000000
 
-void delay_init(void);
-void delay(uint32_t);
-int LCDInit(void);
-uint8_t LCDwrite(uint8_t, bool);
-void ADCsetup(void);
-int LCDClear(void);
-int LCDwriteInteger(int);
-int LCDwriteString(const char* str);
-int LCDputCursor(uint8_t row, uint8_t col);
+int lcd_init(void);
+uint8_t lcd_write(uint8_t, bool);
+int lcd_clear(void);
+int lcd_write_int(int);
+int lcd_write_str(const char* str);
+int lcd_cursor_pos(uint8_t row, uint8_t col);
 
 #endif

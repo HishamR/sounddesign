@@ -1,4 +1,4 @@
-src/adc_dac.d src/adc_dac.o: ../src/adc_dac.c ../src/asf.h \
+src/sample_int.d src/sample_int.o: ../src/sample_int.c ../src/asf.h \
  ../src/ASF/sam/drivers/adc/adc.h ../src/ASF/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\lib\gcc\arm-none-eabi\4.8.3\include\stddef.h \
  ../src/ASF/common/utils/parts.h \
@@ -121,7 +121,12 @@ src/adc_dac.d src/adc_dac.o: ../src/adc_dac.c ../src/asf.h \
  ../src/ASF/common/services/clock/sam3x/pll.h \
  ../src/ASF/sam/drivers/pmc/sleep.h ../src/ASF/sam/drivers/tc/tc.h \
  ../src/ASF/sam/drivers/uart/uart.h \
- ../src/ASF/sam/drivers/pio/pio_handler.h ../src/adc_dac.h
+ ../src/ASF/sam/drivers/pio/pio_handler.h ../src/sample_int.h \
+ ../src/LCDShield.h \
+ c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\string.h \
+ c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
+ c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
+ ../src/asf.h ../src/delay.h ../src/adc_dac.h
 
 ../src/asf.h:
 
@@ -382,5 +387,19 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu
 ../src/ASF/sam/drivers/uart/uart.h:
 
 ../src/ASF/sam/drivers/pio/pio_handler.h:
+
+../src/sample_int.h:
+
+../src/LCDShield.h:
+
+c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\string.h:
+
+c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
+
+c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
+
+../src/asf.h:
+
+../src/delay.h:
 
 ../src/adc_dac.h:

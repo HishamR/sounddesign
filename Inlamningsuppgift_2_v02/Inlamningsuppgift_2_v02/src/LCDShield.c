@@ -8,29 +8,9 @@
 *  Author: Hisham Ramish and Hamit Sen
 */
 
-#include <stdio.h>
-#include <string.h>
-#include "asf.h"
 #include "LCDShield.h"
 
-void delay_init(void)		/* Initializes the timer used for delays */
-{
-	pmc_enable_periph_clk(ID_TC0);
-	tc_init(TC0,0,0);		 /* TC0, channel 0, TCLK1 och capturemode */
-	tc_set_block_mode(TC0,0);
-	tc_stop(TC0,0);			/* making sure the timer does not run  */
-}
-
-
-void delay(uint32_t us)		/* A simple implementation for a delay in us (not calibrated) */
-{
-	tc_start(TC0,0);
-	while (tc_read_cv(TC0,0) < us*42);
-	tc_stop(TC0,0);
-}
-
-
-int LCDInit(void)		/* Initializes the display on the LCD shield, returns 1 if everything is ok */
+int lcd_init(void)		/* Initializes the display on the LCD shield, returns 1 if everything is ok */
 {
 	int all_ok=0;		/* at the beginning assume nothing works */
 	
@@ -86,21 +66,21 @@ int LCDInit(void)		/* Initializes the display on the LCD shield, returns 1 if ev
 	
 	delay(100);
 
-	LCDwrite(0b00101000, LOW);		/* Two rows, small font */
-	LCDwrite(0b00001000, LOW);		/* Display off */
-	LCDwrite(0b00000001, LOW);		/* Display clear */
+	lcd_write(0b00101000, LOW);		/* Two rows, small font */
+	lcd_write(0b00001000, LOW);		/* Display off */
+	lcd_write(0b00000001, LOW);		/* Display clear */
 	
 	delay(3000);
 	
-	LCDwrite(0b00000110, LOW);		/* Entry mode set: move cursor right, no display shift */
-	LCDwrite(0b00001111 ,LOW);		/* Display on, cursor on, blinking on */
+	lcd_write(0b00000110, LOW);		/* Entry mode set: move cursor right, no display shift */
+	lcd_write(0b00001111 ,LOW);		/* Display on, cursor on, blinking on */
 
 	all_ok = 1;					/* simple return statement showing that the initialization of the LCD has completed */
 	return all_ok;
 }
 
 
-uint8_t LCDwrite(uint8_t byte, bool type)		/* writes a byte to the LCD display */
+uint8_t lcd_write(uint8_t byte, bool type)		/* writes a byte to the LCD display */
 /*
 *	writes the byte (8 bits) to the LCD display as two consecutive 4 bits
 *	type = 0 controls the display
@@ -147,20 +127,20 @@ uint8_t LCDwrite(uint8_t byte, bool type)		/* writes a byte to the LCD display *
 	return mirrored_output;
 }
 
-int LCDClear(void)
+int lcd_clear(void)
 {
 	int all_Ok = 0;
-	LCDwrite(0b00000001, LOW);
+	lcd_write(0b00000001, LOW);
 	delay(1600);
 	all_Ok = 1;
 	return all_Ok;
 }
 
-int LCDwriteInteger(int number)
+int lcd_write_int(int number)
 {
 	char output[10];
 	sprintf(output, "%d", number);
-	LCDwriteString(output);
+	lcd_write_str(output);
 	return 1;
 
 }
@@ -168,7 +148,7 @@ int LCDwriteInteger(int number)
 /*
 * Displays strings on the Arduino Shield Display
 */
-int LCDwriteString(const char* str)
+int lcd_write_str(const char* str)
 {
 	int all_ok = 0;
 	
@@ -177,7 +157,7 @@ int LCDwriteString(const char* str)
 	*/
 	while (*str != '\0')
 	{
-		LCDwrite(*str, HIGH);
+		lcd_write(*str, HIGH);
 		str++;
 	}
 	
@@ -185,9 +165,9 @@ int LCDwriteString(const char* str)
 	return all_ok;
 }
 
-int LCDputCursor(uint8_t row, uint8_t col)
+int lcd_cursor_pos(uint8_t row, uint8_t col)
 {
-	LCDwrite((128 | (row << 6) | col), LOW);
+	lcd_write((128 | (row << 6) | col), LOW);
 	delay(40);	//delay of 40ms
 	return 1;
 }

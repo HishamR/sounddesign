@@ -4,6 +4,8 @@
 
 src\adc_dac.c
 
+src\ASF\sam\drivers\uart\uart.c
+
 src\conf_tc.c
 
 src\delay.c
@@ -12,7 +14,7 @@ src\LCDShield.c
 
 src\main.c
 
-src\sampel_int.c
+src\sample_int.c
 
 src\ASF\common\services\clock\sam3x\sysclk.c
 

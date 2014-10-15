@@ -11,8 +11,8 @@
 #include <asf.h>
 #include "conf_tc.h"
 
-void configure_tc(void)
-{
+void configure_tc(void) {
+
 	/* Configure PMC */
 	pmc_enable_periph_clk(ID_TC0);
 
@@ -25,6 +25,5 @@ void configure_tc(void)
 	tc_enable_interrupt(TC0, 0, TC_IER_CPCS);
 
 	tc_start(TC0, 0);
-
 }
 

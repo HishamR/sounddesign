@@ -9,9 +9,10 @@
 */
 
 #include <asf.h>
-#include "sampel_int.h"
+#include "sample_int.h"
 #include "LCDShield.h"
 #include "adc_dac.h"
+#include "delay.h"
 
 /************************************************************************/
 /*	Updating information on the LCD                                     */
@@ -19,10 +20,10 @@
 void LCDupdate(uint8_t pos, uint16_t val, const char *unit) {
 	
 	char update[7];
-	LCDwrite(pos, LOW);	//Cursor positioning
+	lcd_write(pos, LOW);	//Cursor positioning
 	delay(40);
 	sprintf(update, "%d%s ", val, unit);	//Format
-	LCDwriteString(update); //To display
+	lcd_write_str(update); //To display
 }
 
 /************************************************************************/
@@ -49,23 +50,24 @@ void TC0_Handler(void) {
 	i++;
 	if (i >= delay) {
 		i = 0;
-		
-		outvalue = invalue + buffer[i];
-		dacc_write_conversion_data(DACC, outvalue);
+	}
+	outvalue = invalue + buffer[i];
+	dacc_write_conversion_data(DACC, outvalue);
 		
 		/*
 		* Button function
 		*/
-		invalue = adc_get_channel_value(ADC, ADC_CHANNEL_11);	//Channel 11 used for buttons
+	if ((i % 200) == 0) {
+		invalue = adc_get_channel_value(ADC, ADC_CHANNEL_7);	//Channel 11 used for buttons
 		if (invalue < 50) {	//Right button on the LCD Shield, set to increase the echo
-			if (echo < 100) {	//Max value for the delay is 100
-				echo++;
-				LCDupdate(0b11001010, echo, "%");	//Update display with the new value for the echo
+			if (echo < 100) {	//Max value for the echo is 100
+				echo += 5;
+// 				LCDupdate(0b11001010, echo, "%");	//Update display with the new value for the echo
 			}
 			} else if (invalue < 1900) {	//Left button on the LCD Shield, set to decrease the echo
 			if (echo > 0) {
-				echo--;
-				LCDupdate(0b11001010, echo, "%");	//Update display with the new value for the echo
+				echo -= 5;
+// 				LCDupdate(0b11001010, echo, "%");	//Update display with the new value for the echo
 			}
 			} else if (invalue < 700) {	//Up button on the LCD Shield, set to increase the delay
 			if (delay < 5000) {
@@ -73,7 +75,7 @@ void TC0_Handler(void) {
 				if (delay > 5000) {
 					delay = 5000;
 				}
-				LCDupdate(0b11000000, ((delay + 1) / 10), "ms");	//Update display with the new value for the delay
+// 				LCDupdate(0b11000000, ((delay + 1) / 10), "ms");	//Update display with the new value for the delay
 			}
 			} else if (invalue < 1500) {	//Down button on the LCD Shield, set to increase the echo
 			if (delay > 0) {
@@ -81,7 +83,7 @@ void TC0_Handler(void) {
 				if (delay < 0) {
 					delay = 0;
 				}
-				LCDupdate(0b11000000, ((delay + 1) / 10), "ms");	//Update display with the new value for the delay
+// 				LCDupdate(0b11000000, ((delay + 1) / 10), "ms");	//Update display with the new value for the delay
 			}
 		}
 	}

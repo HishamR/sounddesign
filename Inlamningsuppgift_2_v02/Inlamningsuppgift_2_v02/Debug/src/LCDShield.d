@@ -1,4 +1,4 @@
-src/LCDShield.d src/LCDShield.o: ../src/LCDShield.c \
+src/LCDShield.d src/LCDShield.o: ../src/LCDShield.c ../src/LCDShield.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\stdio.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
@@ -123,7 +123,10 @@ src/LCDShield.d src/LCDShield.o: ../src/LCDShield.c \
  ../src/ASF/sam/drivers/pmc/pmc.h ../src/ASF/common/services/clock/pll.h \
  ../src/ASF/common/services/clock/sam3x/pll.h \
  ../src/ASF/sam/drivers/pmc/sleep.h ../src/ASF/sam/drivers/tc/tc.h \
- ../src/ASF/sam/drivers/pio/pio_handler.h ../src/LCDShield.h
+ ../src/ASF/sam/drivers/uart/uart.h \
+ ../src/ASF/sam/drivers/pio/pio_handler.h ../src/delay.h
+
+../src/LCDShield.h:
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu-toolchain\arm-none-eabi\include\stdio.h:
 
@@ -387,6 +390,8 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\arm\ gcc\native\4.8.1429\arm-gnu
 
 ../src/ASF/sam/drivers/tc/tc.h:
 
+../src/ASF/sam/drivers/uart/uart.h:
+
 ../src/ASF/sam/drivers/pio/pio_handler.h:
 
-../src/LCDShield.h:
+../src/delay.h:

@@ -9,13 +9,11 @@
  */
 
 
-#ifndef SAMPEL_INT_H_
-#define SAMPEL_INT_H_
-
-#define CHECK_PIN PIO_PB26_IDX	//Ardiuno Due pin 22 used to measure work load
+#ifndef SAMPLE_INT_H_
+#define SAMPLE_INT_H_
 
 void LCDupdate(uint8_t pos, uint16_t val, const char *unit);
 void TCO_Handler(void);
 
 
-#endif /* SAMPEL_INT_H_ */
+#endif /* SAMPLE_INT_H_ */

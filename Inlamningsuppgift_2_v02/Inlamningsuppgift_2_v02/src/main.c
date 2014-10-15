@@ -9,27 +9,27 @@
 #include "adc_dac.h"
 #include "conf_tc.h"
 #include "LCDShield.h"
-#include "sampel_int.h"
+#include "sample_int.h"
 #include "delay.h"
 
 int main(void) {
 	
 	sysclk_init();
-	board_init();
-	ioport_init();
-	adc_setup();
-	dac_setup();
-	DelayInit();
-	LCDInit();
+ 	board_init();
+ 	ioport_init();
+ 	adc_setup();
+ 	dac_setup();
+ 	delay_init();
+ 	configure_tc();
+	lcd_init();
 	
 	/*
 	* Start the program
 	*/
-	
-	LCDwriteString(("DELAY  ECHO"));
+	lcd_clear();
+	lcd_write_str(("DELAY  ECHO"));
 	LCDupdate(0b11000000, ((4999 + 1) / 10), "ms");
 	LCDupdate(0b11001010, 50, "%");
-	configure_tc();
 	
 	while(1);
 }

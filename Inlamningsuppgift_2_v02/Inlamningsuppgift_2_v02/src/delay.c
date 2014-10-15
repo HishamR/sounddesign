@@ -7,7 +7,7 @@
 
 #include "delay.h"
 
-void DelayInit(void)
+void delay_init(void)
 {
 	pmc_enable_periph_clk(ID_TC3);
 	tc_init(TC1,0,0);	/*TC0, channel 0, TCLK1 och capturemode */
@@ -15,7 +15,7 @@ void DelayInit(void)
 	tc_stop(TC1,0);		/* Making sure the timer is not running */
 }
 
-void Delay(uint32_t us)
+void delay(uint32_t us)
 /* A Delay of us microseconds */
 {
 	tc_start(TC1,0);
