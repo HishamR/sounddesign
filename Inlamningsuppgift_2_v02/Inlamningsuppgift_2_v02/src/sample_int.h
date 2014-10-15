@@ -12,8 +12,7 @@
 #ifndef SAMPLE_INT_H_
 #define SAMPLE_INT_H_
 
-void LCDupdate(uint8_t pos, uint16_t val, const char *unit);
+int lcd_update(uint16_t echo, uint16_t delay_btn);
 void TCO_Handler(void);
-
 
 #endif /* SAMPLE_INT_H_ */

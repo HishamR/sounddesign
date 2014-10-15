@@ -22,14 +22,15 @@ int main(void) {
  	delay_init();
  	configure_tc();
 	lcd_init();
+	lcd_cursor_pos(0,0);
+	lcd_write_str("VERSION 9000");
+	delay(2000000);
+	lcd_clear();
+	lcd_update(50, 5000);
 	
 	/*
 	* Start the program
 	*/
-	lcd_clear();
-	lcd_write_str(("DELAY  ECHO"));
-	LCDupdate(0b11000000, ((4999 + 1) / 10), "ms");
-	LCDupdate(0b11001010, 50, "%");
 	
 	while(1);
 }

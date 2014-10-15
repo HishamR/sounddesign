@@ -15,26 +15,29 @@
 #include "delay.h"
 
 /************************************************************************/
-/*	Updating information on the LCD                                     */
-/************************************************************************/
-void LCDupdate(uint8_t pos, uint16_t val, const char *unit) {
-	
-	char update[7];
-	lcd_write(pos, LOW);	//Cursor positioning
-	delay(40);
-	sprintf(update, "%d%s ", val, unit);	//Format
-	lcd_write_str(update); //To display
-}
-
-/************************************************************************/
 /*	Interrupt handler for TC0 interrupt.                                */
 /************************************************************************/
+int lcd_update(uint16_t echo, uint16_t delay_btn){
+	
+	lcd_clear();
+	lcd_cursor_pos(0,0);
+	lcd_write_str(("ECHO: "));
+	lcd_write_int(echo);
+	lcd_write_str(("%"));
+	
+	lcd_cursor_pos(1,0);
+	lcd_write_str(("DELAY: "));
+	lcd_write_int(delay_btn/10);
+	lcd_write_str(("ms"));
+	return 1;
+}
+
 void TC0_Handler(void) {
 	
 	static uint16_t i = 0;
 	static uint16_t buffer[5000] = {0};
-	uint32_t invalue, outvalue;
-	uint16_t echo = 50, delay = 4999, steps = 10;
+	static uint16_t invalue, outvalue;
+	static uint16_t echo = 50, delay_btn = 5000;
 	
 	tc_get_status(TC0, 0);
 	adc_start(ADC);
@@ -48,42 +51,40 @@ void TC0_Handler(void) {
 	*/
 	buffer[i] = ((buffer[i] + invalue) * echo) / 100;
 	i++;
-	if (i >= delay) {
+	if (i >= delay_btn) {
 		i = 0;
 	}
 	outvalue = invalue + buffer[i];
 	dacc_write_conversion_data(DACC, outvalue);
-		
-		/*
-		* Button function
-		*/
+	
+	/*
+	* Button function
+	*/
 	if ((i % 200) == 0) {
-		invalue = adc_get_channel_value(ADC, ADC_CHANNEL_7);	//Channel 11 used for buttons
-		if (invalue < 50) {	//Right button on the LCD Shield, set to increase the echo
+		invalue = adc_get_channel_value(ADC, ADC_CHANNEL_7);	//Channel 0 used for buttons
+		if (invalue < 400) {	//Right button on the LCD Shield, set to increase the echo
 			if (echo < 100) {	//Max value for the echo is 100
-				echo += 5;
-// 				LCDupdate(0b11001010, echo, "%");	//Update display with the new value for the echo
+				echo ++;
+				lcd_update(echo, delay_btn);
 			}
-			} else if (invalue < 1900) {	//Left button on the LCD Shield, set to decrease the echo
+		} else if ((invalue > 1500) & (invalue < 2000)) {	//Left button on the LCD Shield, set to decrease the echo
 			if (echo > 0) {
-				echo -= 5;
-// 				LCDupdate(0b11001010, echo, "%");	//Update display with the new value for the echo
+				echo --;
+				lcd_update(echo, delay_btn);
 			}
-			} else if (invalue < 700) {	//Up button on the LCD Shield, set to increase the delay
-			if (delay < 5000) {
-				delay += steps;
-				if (delay > 5000) {
-					delay = 5000;
-				}
-// 				LCDupdate(0b11000000, ((delay + 1) / 10), "ms");	//Update display with the new value for the delay
+		} else if ((invalue > 400) & (invalue < 1000)) {	//Up button on the LCD Shield, set to increase the delay
+			if (delay_btn < 5000) {
+				delay_btn += 10;
+				if (delay_btn > 5000) {
+					delay_btn = 5000;
+				}lcd_update(echo, delay_btn);
 			}
-			} else if (invalue < 1500) {	//Down button on the LCD Shield, set to increase the echo
-			if (delay > 0) {
-				delay -= steps;
-				if (delay < 0) {
-					delay = 0;
-				}
-// 				LCDupdate(0b11000000, ((delay + 1) / 10), "ms");	//Update display with the new value for the delay
+		} else if ((invalue > 1000) & (invalue < 1500)) {	//Down button on the LCD Shield, set to increase the echo
+			if (delay_btn > 0) {
+				delay_btn -= 10;
+				if (delay_btn < 0) {
+					delay_btn = 0;
+				}lcd_update(echo, delay_btn);
 			}
 		}
 	}
